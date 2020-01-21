@@ -9,10 +9,22 @@
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">  <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <style type="text/css">
+  	.footer {
+	  position: absolute;
+	  bottom: 0;
+	  width: 100%;
+	  height: 60px;
+	  line-height: 60px;
+	}
+  </style>
 </head>
 <body>
 <div id="app">
   <index-component></index-component>
 </div>
+<footer class="footer bg-dark text-light">
+    <span class="text-muted mr-4 pull-right float-right">© Mark Jourine David 2020</span>
+</footer>
 </body>
 </html>
