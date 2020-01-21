@@ -20,6 +20,7 @@
 
 Note: I may forgot indicate some steps so feel free to contact me if you have any questions
 - I will also try to deploy a demo and refactor some code
+- default password for created users using the user management is "expsmngr2020!"
 ----------------------------------
 
 # Author
