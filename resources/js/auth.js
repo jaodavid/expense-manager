@@ -15,7 +15,7 @@ const config = {
   loginData: {url: '/auth/login', method: 'POST', redirect: '', fetchUser: true},
   logoutData: {url: '/auth/logout', method: 'POST', redirect: '/', makeRequest: true},
   fetchData: {url: '/auth/user', method: 'GET', enabled: true},
-  refreshData: {url: '/auth/refresh', method: 'GET', enabled: true, interval: 60}
+  refreshData: {url: '/auth/refresh', method: 'GET', enabled: true, interval: 0}
 }
 
 export default config
