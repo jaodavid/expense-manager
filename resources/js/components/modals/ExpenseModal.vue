@@ -20,34 +20,51 @@
         options: {
           format: 'YYYY/MM/DD',
           useCurrent: false,
-        }
+        },
+        error: [],
+        hasError: false
       }
     },
     methods: {
       close() {
+        this.error = []
+        this.hasError = false
         this.$emit('close');
       },
       save() {
         let params = this.expenseData;
-
         let currentObj = this;
         if (params.id) {
           this.axios.put(`/expense/${params.id}`, params)
           .then(function (response) {
-              currentObj.output = response.data;
-              currentObj.close()
+              if (response.data.error) {
+                currentObj.error = response.data.error;
+                currentObj.hasError = true
+              } else {
+                currentObj.output = response.data;
+                currentObj.close()
+                currentObj.hasError = false
+              }
           })
           .catch(function (error) {
-              currentObj.output = error;
+              currentObj.hasError = true
+              currentObj.error = {'message': [error]};
           });
         } else {
           this.axios.post(`/expense`, params)
           .then(function (response) {
-              currentObj.output = response.data;
-              currentObj.close()
+              if (response.data.error) {
+                currentObj.error = response.data.error;
+                currentObj.hasError = true
+              } else {
+                currentObj.output = response.data;
+                currentObj.close()
+                currentObj.hasError = false
+              }
           })
           .catch(function (error) {
-              currentObj.output = error;
+              currentObj.hasError = true
+              currentObj.error = {'message': [error]};
           });
         }
       },
@@ -56,11 +73,18 @@
         let currentObj = this;
         this.axios.delete(`/expense/${params.id}`)
           .then(function (response) {
-              currentObj.output = response;
-              currentObj.close()
+              if (response.data.error) {
+                currentObj.error = response.data.error;
+                currentObj.hasError = true
+              } else {
+                currentObj.output = response.data;
+                currentObj.close()
+                currentObj.hasError = false
+              }
           })
           .catch(function (error) {
-              currentObj.output = error;
+              currentObj.hasError = true
+              currentObj.error = {'message': [error]};
           });
       }
     },
@@ -74,12 +98,17 @@
 
           <div class="modal-header">
             <slot name="header">
-              {{ state }} {{ title }}
+              <h3 class="h3">{{ state | capitalize }} {{ title | capitalize }}</h3>
             </slot>
           </div>
 
           <div class="modal-body">
             <slot name="body">
+              <div v-if="hasError" class="alert alert-danger" role="alert">
+                <div v-for="err in error">
+                  <span v-for="e in err">{{ e }}</span>
+                </div>
+              </div>
               <form autocomplete="off" v-on:submit.prevent="save" method="post">
                 <div class="form-group">
                   <input v-if="expenseData.id" type="hidden" id="id" name="id" v-model="expenseData.id">
@@ -106,7 +135,7 @@
                   <div class="btn btn-danger" @click="deleteExpense">delete</div>
                 </div>
                 <div class="float-right pull-right">
-                  <div class="btn btn-info" @click="$emit('close')">cancel</div>
+                  <div class="btn btn-info" @click="close">cancel</div>
                   <button type="submit" class="btn btn-success">save</button>
                 </div>
               </form>

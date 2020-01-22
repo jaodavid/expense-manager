@@ -93,7 +93,7 @@
                       </tr>
                       <tr v-for="myexp in myExpenses" style="margin-bottom: 5px;">
                           <td>{{ myexp.name }}</td>
-                          <td>{{ myexp.sum }}</td>
+                          <td>{{ myexp.sum | currency  }}</td>
                       </tr>
                   </table>
                 </div>

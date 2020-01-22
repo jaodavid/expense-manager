@@ -15,6 +15,7 @@ import Index from './Index'
 import auth from './auth'
 import router from './router'
 import VueGraph from 'vue-graph'
+import Vue2Filters from 'vue2-filters'
 
 window.Vue = require('vue');
 
@@ -24,6 +25,7 @@ Vue.use(VueAxios, axios)
 axios.defaults.baseURL = `/api`
 Vue.use(VueAuth, auth)
 Vue.use(VueGraph)
+Vue.use(Vue2Filters)
 
 /**
  * The following block of code may be used to automatically register your
