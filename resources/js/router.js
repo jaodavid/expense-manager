@@ -56,7 +56,7 @@ const routes = [
     children: [
         {
           path: 'expense-management',
-          name: 'Expense Management',
+          name: 'User Expense Management',
           component: ExpenseManagement
         }
       ]
@@ -87,7 +87,7 @@ const routes = [
         },
         {
           path: 'expense-management',
-          name: 'Expense Management',
+          name: 'Admin Expense Management',
           component: ExpenseManagement
         }
       ]
