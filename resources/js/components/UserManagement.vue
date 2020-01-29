@@ -17,7 +17,7 @@
             <th scope="row">{{ user.name }}</th>
             <td>{{ user.email }}</td>
             <td>{{ user.role.name }}</td>
-            <td>{{ user.created_at}}</td>
+            <td>{{ user.created_at | moment("MMMM Do YYYY, h:mm:ss a") }}</td>
         </tr>
     </table>
     <modal

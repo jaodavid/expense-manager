@@ -16,6 +16,7 @@ import auth from './auth'
 import router from './router'
 import VueGraph from 'vue-graph'
 import Vue2Filters from 'vue2-filters'
+import VueMoment from 'vue-moment'
 
 window.Vue = require('vue');
 
@@ -26,6 +27,7 @@ axios.defaults.baseURL = `/api`
 Vue.use(VueAuth, auth)
 Vue.use(VueGraph)
 Vue.use(Vue2Filters)
+Vue.use(VueMoment)
 
 /**
  * The following block of code may be used to automatically register your

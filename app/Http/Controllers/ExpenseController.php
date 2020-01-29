@@ -115,7 +115,7 @@ class ExpenseController extends Controller
         )
         ->where('expenses.user_id', $id)
         ->leftJoin('expense_categories', 'expense_categories.id', '=', 'expenses.expense_category_id')
-        ->groupBy('expense_category_id')
+        ->groupBy('expense_category_id', 'expense_categories.name')
         ->get();
 
         $total = Expense::where('user_id', $id)->sum('amount');

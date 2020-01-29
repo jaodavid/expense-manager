@@ -15,7 +15,7 @@
         <tr v-for="cat in categories" v-bind:key="cat.id" v-on:dblclick="editModal(cat.id)" style="cursor: pointer">
             <th scope="row">{{ cat.name }}</th>
             <td>{{ cat.description }}</td>
-            <td>{{ cat.created_at}}</td>
+            <td>{{ cat.created_at | moment("MMMM Do YYYY, h:mm:ss a") }}</td>
           </tr>
     </table>
     <modal

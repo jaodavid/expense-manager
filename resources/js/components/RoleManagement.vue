@@ -15,7 +15,7 @@
         <tr v-for="role in roles" v-bind:key="role.id" v-on:dblclick="editModal(role.id)" style="cursor: pointer">
             <th scope="row">{{ role.name }}</th>
             <td>{{ role.description }}</td>
-            <td>{{ role.created_at}}</td>
+            <td>{{ role.created_at | moment("MMMM Do YYYY, h:mm:ss a") }}</td>
         </tr>
     </table>
     <modal

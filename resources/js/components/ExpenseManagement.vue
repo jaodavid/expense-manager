@@ -16,8 +16,8 @@
         <tr v-for="expense in expenses" v-bind:key="expense.id" v-on:dblclick="editModal(expense.id)" style="cursor: pointer">
             <th scope="row">{{ expense.category.name }}</th>
             <td>{{ expense.amount | currency  }}</td>
-            <td>{{ expense.entry_date }}</td>
-            <td>{{ expense.created_at}}</td>
+            <td>{{ expense.entry_date | moment("MMMM Do YYYY") }}</td>
+            <td>{{ expense.created_at | moment("MMMM Do YYYY, h:mm:ss a") }}</td>
         </tr>
     </table>
     <modal
